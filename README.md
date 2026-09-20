@@ -415,31 +415,63 @@ The export exists so the dataset is portable: the same fixtures can feed either 
 
 ```
 src/
-  config.py            region, inference-profile model IDs, limits
-  schema.py            the contract + the Bedrock schema-restriction checker
-  tools.py             three deterministic, side-effect-free tools
-  cases.py             the twenty authored fixtures (single source of truth)
-  bedrock_client.py    live Converse client + the offline stub
-  agent.py             bounded tool loop, schema-constrained answer, routing rule
-  cost.py              token and cost accounting
-  pricing.py           prices, deliberately empty until read off the AWS page
-  cli.py               the command-line interface
-  mcp_server.py        the MCP server: five tools, one resource, fail-closed auth
+  config.py             region, inference-profile model IDs, limits
+  schema.py             the contract + the Bedrock schema-restriction checker
+  model_capabilities.py what each model was probed to support, in three states
+  tools.py              three deterministic, side-effect-free tools
+  cases.py              the twenty authored fixtures (single source of truth)
+  bedrock_client.py     live Converse client + the offline stub
+  agent.py              bounded tool loop, schema-constrained answer, routing rule
+  cost.py               token and cost accounting
+  pricing.py            prices, deliberately empty until read from a real source
+  cli.py                the command-line interface
+  mcp_server.py         the MCP server: five tools, one resource, fail-closed auth
+
 evals/
-  run_evals.py             the gate: schema validity, field correctness, PII leaks
-  export_native_dataset.py JSONL export for a native Bedrock evaluation job
+  run_evals.py              the gate: schema validity, field correctness, PII leaks
+  export_native_dataset.py  JSONL export for a native Bedrock evaluation job
+  model_capabilities.json   the probe's output, read by the agent
+  native_dataset.jsonl      the exported dataset
+
 experiments/
-  compare.py           always-cheap vs always-strong vs routed
+  compare.py            four arms: always-cheap, always-strong, always-third, routed
+
 scripts/
-  create_guardrail.py  creates the PII/denied-topic guardrail
+  # provisioning, in the order they are needed
+  phase0-wizard.sh          walks a human through the console steps
+  bootstrap_iam_user.py     the scoped user, its policy and one access key
+  bootstrap_aws.py          the budget alarm and its SNS alert topic
+  switch_off_bootstrap_session.py  drops the privileged session afterwards
+  accept_model_agreement.py the gate nobody documents
+  create_guardrail.py       the PII and denied-topic guardrail, versioned
+  # prices
+  fetch_prices_from_offers.py  authoritative rates from the signed agreement
+  set_prices.py                the fallback: four numbers, validated
+  # verification
+  verify_aws_setup.py       credentials, model access, prices, guardrail, budget
+  verify_guardrail.py       the guardrail's behaviour, or its configuration
+  probe_structured_outputs.py  per-model invocation, native schema, tool use
+  # running
+  run_live_evaluation.sh    the whole live sequence, fail-fast, then README rows
+  summarise_results.py      turns recorded runs into the table rows above
+  setup_agent_toolkit.sh    AWS's Agent Toolkit, with the backups it needs
+
+aws/
+  iam-policy.json       the least-privilege policy, EU-locked by condition
+
 tests/
-  test_smoke.py        23 tests, no AWS account required
+  test_smoke.py         36 tests, no AWS account required
+
 docs/
-  DESIGN.md            why each decision was made, including the ones that were rejected
-  PHASE0.md            the account-provisioning runbook and the four Bedrock gates
-  NATIVE_EVAL.md       the native evaluation job runbook
-  AGENT_TOOLKIT.md     the Agent Toolkit setup record, deviations included
-  RESUME.md            current state, the account blocker, and the next commands
+  DESIGN.md             why each decision was made, including the rejected ones
+  PHASE0.md             the account-provisioning runbook and the four Bedrock gates
+  NATIVE_EVAL.md        the native evaluation job runbook
+  AGENT_TOOLKIT.md      the Agent Toolkit setup record, deviations included
+  RESUME.md             current state, the account blocker, and the next commands
+
+.github/workflows/ci.yml  lint, tests and the offline gate, with no credentials
+AGENTS.md                 repository instructions, including AWS's own rules
+Makefile                  every entry point, discoverable with `make help`
 ```
 
 ## Data note
