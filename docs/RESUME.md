@@ -69,8 +69,8 @@ The evidence that it is not a limit we tripped:
 - all four availability flags read
   `agreement=AVAILABLE authorization=AUTHORIZED entitlement=AVAILABLE region=AVAILABLE`.
 
-The account is on the **Free plan** (`accountPlanType: FREE`, `accountPlanRemainingCredits: 120
-USD`). Whether the plan contributes to the restriction is **not established** — the explicit error
+The account is on the **Free plan** (`accountPlanType: FREE`). Whether the plan contributes to the
+restriction is **not established** — the explicit error
 blames verification, and the earlier conclusion that the plan was the cause was reached from
 circumstantial evidence and should not be repeated as fact.
 
@@ -107,8 +107,8 @@ is an AWS Support conversation, not a configuration change.
 
 Upgrading to Pay-as-you-go is worth doing **if and only if** verification completes and Bedrock is
 still restricted — the earlier claim that the plan was the cause was inference, not evidence, and
-it has been corrected twice in this project's own documents. Upgrading keeps the 120 USD of
-credits and bills only for what they do not cover; the whole workload costs well under a dollar.
+it has been corrected twice in this project's own documents. Upgrading keeps the signup credits and
+bills only for what they do not cover; the whole workload costs well under a dollar.
 
 ### 4. Record the prices
 
