@@ -77,8 +77,8 @@ millions and essentially unused. Every Bedrock model was throttled — including
 which needs neither the agreement nor a Marketplace subscription — while non-Bedrock APIs on the
 same account worked normally. That combination points at the account, not at the request.
 
-**The credits are not the constraint.** `accountPlanRemainingCredits` read 120 USD throughout.
-What the Free plan restricts is service access, not spending. Upgrading to Pay-as-you-go keeps
+**The credits are not the constraint.** The account's remaining credits were untouched throughout,
+and a Free-plan account cannot spend them on a service the plan does not grant. Upgrading keeps
 the credits and bills only for what they do not cover.
 
 Check the account state directly (this needs `freetier:*`, which the scoped runtime user
