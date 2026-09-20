@@ -18,11 +18,13 @@ inference on the AWS account, and it is not a configuration problem on our side.
 | Region lock | EU-wide deny on `bedrock:*`, corrected after a live call was routed to `eu-west-3` |
 | Marketplace permission | `aws-marketplace:ViewSubscriptions` / `Subscribe` added; `Unsubscribe` deliberately not |
 | Model agreement | accepted for both Claude 4.5 models (`agreement=AVAILABLE`) |
+| Guardrail | `meeting-extraction-pii` published as **immutable version 2**; configuration verified, behaviour not yet |
 | Budget alarm | `bedrock-agent-eval-monthly`, 10 USD, 3 thresholds, SNS topic + email |
-| Prices | **not recorded** — needs a human to read four numbers (`make prices`) |
-| Bedrock inference | **blocked**: `ThrottlingException: Too many tokens per day` on every model |
-| Agent Toolkit | 23 skills installed, 105 in the catalogue, `aws-mcp` configured for 4 agents |
-| Repo | 36 tests pass, `ruff` clean, offline eval green |
+| Prices | **not recorded** — needs one privileged session, or a human to read four numbers (`make prices`) |
+| Bedrock inference | **blocked**: `ThrottlingException: Too many tokens per day` on every model, in every region tested |
+| Agent Toolkit | 23 skills installed, 105 in the catalogue, `aws-mcp` configured for 4 agents and started successfully |
+| Repo | 36 tests pass, `ruff` clean, offline eval green, CI green on every push |
+| Published | <https://github.com/Samuel-Ku/bedrock-agent-eval> — public, 8 commits |
 
 ## The blocker, precisely
 
