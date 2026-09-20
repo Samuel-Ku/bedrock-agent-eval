@@ -81,7 +81,7 @@ It cannot create the AWS account itself, because that needs a card and phone ver
 everything after that step it does for you. `docs/PHASE0.md` has the same procedure as
 prose, plus what to do when a step fails.
 
-`make test` runs 23 smoke tests with no AWS account: the schema guard, the scoring
+`make test` runs the smoke tests with no AWS account: the schema guard, the scoring
 helpers, the cost arithmetic, the escalation path, the guardrail simulation and the MCP
 surface.
 

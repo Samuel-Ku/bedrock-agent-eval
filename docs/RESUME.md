@@ -22,7 +22,7 @@ inference on the AWS account, and it is not a configuration problem on our side.
 | Prices | **not recorded** — needs a human to read four numbers (`make prices`) |
 | Bedrock inference | **blocked**: `ThrottlingException: Too many tokens per day` on every model |
 | Agent Toolkit | 23 skills installed, 105 in the catalogue, `aws-mcp` configured for 4 agents |
-| Repo | 32 tests pass, `ruff` clean, offline eval green |
+| Repo | 36 tests pass, `ruff` clean, offline eval green |
 
 ## The blocker, precisely
 
@@ -198,7 +198,7 @@ to step 3 — the plan question answered itself.
 ## If something in the repo misbehaves
 
 ```bash
-make test                        # 32 tests, no AWS needed
+make test                        # 36 tests, no AWS needed
 uv run python -m evals.run_evals --offline
 uv run python scripts/accept_model_agreement.py --check-only   # needs an admin identity
 uv run python scripts/verify_aws_setup.py
