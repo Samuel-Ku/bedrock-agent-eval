@@ -10,6 +10,19 @@ This script exists so that "read four numbers" is the *only* thing left to do, r
 one stage of a longer wizard. It validates what you type, refuses values that are obviously
 transposed, writes them to `.env` with today's date, and prints the resulting table.
 
+**Three independent attempts to avoid that manual step all failed**, recorded here so nobody
+repeats them:
+
+1. `web_fetch` on the pricing page returns navigation only — the rate table is client-rendered.
+2. The AWS MCP documentation search finds the pricing page, but returns only its prose and a
+   worked example, never the table.
+3. The AWS MCP documentation reader returns roughly 12,000 characters from that URL with **zero**
+   occurrences of any model name. The table is not in the payload at all.
+
+The only machine-readable source is `bedrock:ListFoundationModelAgreementOffers`, which returns the
+rates from the agreement the account has already signed — `scripts/fetch_prices_from_offers.py`.
+It needs one permission the running IAM policy does not yet carry; see docs/RESUME.md.
+
 Usage:
     python scripts/set_prices.py                       # prompts for all four
     python scripts/set_prices.py --haiku-in 1 --haiku-out 5 --sonnet-in 3 --sonnet-out 15
