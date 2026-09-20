@@ -1,0 +1,48 @@
+name: gate
+
+# What this workflow proves, and what it deliberately does not.
+#
+# It runs on every push and pull request, with no AWS credentials anywhere. So it proves the
+# harness works: the modules import, the schema passes Bedrock's restriction checker, the MCP
+# surface builds, and the twenty-case evaluation completes end to end against the offline stub.
+#
+# It does NOT prove anything about a model. The stub is a perfect oracle, so a green run says
+# the plumbing is intact and says nothing else. A job that invoked real models would need
+# credentials in CI and would spend money on every push, which is why there is not one: the
+# live gate is `make live`, run deliberately by a human.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  offline-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Pinned to a major tag. If this ever fails to resolve, bump it: the action is the
+      # supported way to get uv into a runner.
+      - uses: astral-sh/setup-uv@v5
+
+      - name: Install
+        run: |
+          uv venv
+          uv pip install -e ".[dev,mcp]"
+
+      - name: Lint
+        run: uv run ruff check .
+
+      - name: Tests
+        run: uv run python -m unittest discover -s tests -v
+
+      - name: The evaluation gate, offline
+        run: uv run bedrock-agent-eval eval --offline --gate 0.9 --out /tmp/offline-results.json
+
+      - name: Say plainly what this did not prove
+        run: |
+          echo "::notice::This job ran the offline stub. It proves the harness works, not that"
+          echo "any model does. The stub fabricates its token counts, so no cost figure is"
+          echo "produced here by design. The live gate is \`make live\`."
