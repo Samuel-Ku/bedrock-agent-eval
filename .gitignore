@@ -1,0 +1,24 @@
+# Secrets and local state. Nothing in this list may ever be committed: the
+# repository is public and a bank will read it.
+.env
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+.DS_Store
+
+# Transient watchdogs, not evidence: the throttle watcher's log and marker say something
+# about the account's state at a moment in time, not about the code.
+evals/throttle-watch.log
+evals/throttle-lifted.marker
+
+# Generated run outputs. The README's tables are the record of a run; these files are
+# rewritten by every run, and an offline one in particular must never be mistaken for a
+# result by someone skimming the repository. Regenerate with `make live`.
+evals/results.json
+evals/results-guardrail-off.json
+evals/results-guardrail-on.json
+experiments/results.json

@@ -1,0 +1,135 @@
+{
+  "region": "eu-north-1",
+  "probed_at": "2026-09-20T19:29:32+0200",
+  "note": "Capabilities are per model per region. 'ok: null' means not probed, not unsupported.",
+  "models": {
+    "eu.anthropic.claude-haiku-4-5-20251001-v1:0": {
+      "model_id": "eu.anthropic.claude-haiku-4-5-20251001-v1:0",
+      "label": "eu.anthropic.claude-haiku-4-5-20251001-v1:0",
+      "invoke": {
+        "ok": false,
+        "reason": "throttled: account-level daily token restriction"
+      },
+      "native_structured_outputs": {
+        "ok": null,
+        "reason": "not probed: invocation failed"
+      },
+      "tool_use": {
+        "ok": null,
+        "reason": "not probed: invocation failed"
+      }
+    },
+    "eu.anthropic.claude-sonnet-4-5-20250929-v1:0": {
+      "model_id": "eu.anthropic.claude-sonnet-4-5-20250929-v1:0",
+      "label": "Claude Sonnet 4.5 (strong tier)",
+      "invoke": {
+        "ok": false,
+        "reason": "throttled: account-level daily token restriction"
+      },
+      "native_structured_outputs": {
+        "ok": null,
+        "reason": "not probed: invocation failed"
+      },
+      "tool_use": {
+        "ok": null,
+        "reason": "not probed: invocation failed"
+      }
+    },
+    "deepseek.v3.2": {
+      "model_id": "deepseek.v3.2",
+      "label": "DeepSeek V3.2",
+      "invoke": {
+        "ok": false,
+        "reason": "throttled: account-level daily token restriction"
+      },
+      "native_structured_outputs": {
+        "ok": null,
+        "reason": "not probed: invocation failed"
+      },
+      "tool_use": {
+        "ok": null,
+        "reason": "not probed: invocation failed"
+      }
+    },
+    "deepseek.v3-v1:0": {
+      "model_id": "deepseek.v3-v1:0",
+      "label": "DeepSeek V3",
+      "invoke": {
+        "ok": false,
+        "reason": "throttled: account-level daily token restriction"
+      },
+      "native_structured_outputs": {
+        "ok": null,
+        "reason": "not probed: invocation failed"
+      },
+      "tool_use": {
+        "ok": null,
+        "reason": "not probed: invocation failed"
+      }
+    },
+    "openai.gpt-oss-20b-1:0": {
+      "model_id": "openai.gpt-oss-20b-1:0",
+      "label": "GPT-OSS 20B",
+      "invoke": {
+        "ok": false,
+        "reason": "throttled: account-level daily token restriction"
+      },
+      "native_structured_outputs": {
+        "ok": null,
+        "reason": "not probed: invocation failed"
+      },
+      "tool_use": {
+        "ok": null,
+        "reason": "not probed: invocation failed"
+      }
+    },
+    "amazon.nova-lite-v1:0": {
+      "model_id": "amazon.nova-lite-v1:0",
+      "label": "Nova Lite",
+      "invoke": {
+        "ok": false,
+        "reason": "throttled: account-level daily token restriction"
+      },
+      "native_structured_outputs": {
+        "ok": null,
+        "reason": "not probed: invocation failed"
+      },
+      "tool_use": {
+        "ok": null,
+        "reason": "not probed: invocation failed"
+      }
+    },
+    "zai.glm-4.7-flash": {
+      "model_id": "zai.glm-4.7-flash",
+      "label": "GLM 4.7 Flash",
+      "invoke": {
+        "ok": false,
+        "reason": "throttled: account-level daily token restriction"
+      },
+      "native_structured_outputs": {
+        "ok": null,
+        "reason": "not probed: invocation failed"
+      },
+      "tool_use": {
+        "ok": null,
+        "reason": "not probed: invocation failed"
+      }
+    },
+    "eu.amazon.nova-lite-v1:0": {
+      "model_id": "eu.amazon.nova-lite-v1:0",
+      "label": "eu.amazon.nova-lite-v1:0",
+      "invoke": {
+        "ok": false,
+        "reason": "throttled: account-level daily token restriction"
+      },
+      "native_structured_outputs": {
+        "ok": null,
+        "reason": "not probed: invocation failed"
+      },
+      "tool_use": {
+        "ok": null,
+        "reason": "not probed: invocation failed"
+      }
+    }
+  }
+}
