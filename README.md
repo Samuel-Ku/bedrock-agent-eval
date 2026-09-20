@@ -1,5 +1,7 @@
 # bedrock-agent-eval
 
+[![gate](https://github.com/Samuel-Ku/bedrock-agent-eval/actions/workflows/ci.yml/badge.svg)](https://github.com/Samuel-Ku/bedrock-agent-eval/actions/workflows/ci.yml)
+
 An Amazon Bedrock agent that turns a project-meeting transcript into structured Jira task
 drafts, wrapped in the things that make an AI system trustworthy rather than merely
 impressive: a native JSON-Schema output contract, a twenty-case evaluation gate, PII
